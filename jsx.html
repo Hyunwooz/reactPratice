@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+
+    // 컴포넌트의 첫문자는 무조건 대문자여야 한다. html tag와 차별점을 주기 위함
+
+    const Title = () => (
+      <h3 id="title" onMouseEnter={() => console.log("mouses")}>
+        title
+      </h3>
+    );
+
+    const Button = () => (
+      <button onClick={() => console.log("click")}>click me</button>
+    );
+
+    const Container = () => (
+      <div>
+        <Title />
+        <Button />
+      </div>
+    );
+    ReactDOM.render(<Container />, root);
+  </script>
+</html>

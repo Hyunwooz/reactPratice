@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <span>0</span>
+        <button id="btn">Click me</button>
+    </body>
+    <script>
+        let conter = 0;
+        const button = document.getElementById("btn");
+        const span = document.querySelector("span")
+        function handleClick() {
+            conter = conter + 1
+            span.innerText = `${conter}`
+        }
+
+        button.addEventListener('click',handleClick);
+    </script>
+</html>
