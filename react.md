@@ -90,3 +90,39 @@ setState() 즉각적인 명령이 아니라 컴포넌트를 갱신하라고 요�
 setState()는 컴포넌트를 항상 즉각적으로 갱신하지 않음. 오히려 여러 변경 사항과 함께 일괄적으로 갱신하거나, 나중으로 미룰 수 있음. 이로 인하여 setState()를 호출하자마자 this.state에 접근하는 것은 잠재적인 문제가 될 수 있음.
 이전 state값을 기준으로 state값을 설정해야 한다면 setState((state)=> state+1)을 사용하는 것이 안전함
 (공식문서참고, https://ko.reactjs.org/docs/react-component.html#setstate)
+
+<br>
+
+버튼의 style property(속성)을 사용
+style={{
+backgroundColor: "tomato",
+}}
+{ -> 2개 열고 일반적인 HTML방식으로 써주면 됨
+
+그러나 너무 길어진다
+이런 스타일들을 모두 갖는 단 한가지의 컴포넌트로 만들어 재사용 가능
+
+내가 만들고 사용하는 모든 컴포넌트들은
+function Btn() -> 괄호로 argument(인자)를 받는다.
+-> argument의 이름은 마음대로 지어줄 수 있다.
+보통은 props라고 부른다. Btn으로부터 전달받는 속성이다.
+
+현재 하고 있는 작업은 Btn이라는 이름의 함수를 부르고 있는 것 뿐
+그리고 정보를 함수에 전달하는 것이다.
+리액트가 실제로 하는 작업은 Btn() 이렇게 함수를 호출해서
+우리가 넣어둔 모든 것들을 첫 번째 인자로 넣어준다.
+-> Btn({banana:"Save Changes"})
+즉 리액트는 자동으로 이곳에 넣는 모든 prop들을 모두
+Btn({banana:"Save Changes"})
+위 오브젝트 안으로 집어넣는다.
+그리고 이 오브젝트는 Btn() 컴포넌트의 첫 번째 인자로 주어진다.
+두 번째 인자는 없다. 유일한 인자이다.
+그리고 Btn({banana:"Save Changes"})를 props로 이름 지어준다.
+그리고 {props.banana}
+이라 적어주어 에 적어주었던 banana 키를 가져온다.
+shortcut은 Btn()에 props를 적지 말고 {banana}를 적으면
+{banana}적는게 가능하다.
+
+<br>
+
+1.리액트는 파라미터를 잘 못 넘겨도 확인할 수 없는 문제점이 존재한다. 2. 이런 문제를 줄이기 위해서 PropTypes라는 모듈의 도움을 받을 수 있다. 3. type과 다르게 입력 되엇을 경우 warning을 뜨게 할수 있고, parameter 에 값을 넣지 않는 경우 경고 메시지를 띄울수 있다.

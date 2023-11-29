@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    const Btn = ({ text, changeValue }) => {
+      console.log(text, "is render");
+      return (
+        <button
+          onClick={changeValue}
+          style={{
+            backgroundColor: "tomato",
+            color: "white",
+            border: 0,
+            padding: 5,
+            borderRadius: 5,
+            marginRight: 3,
+          }}
+        >
+          {text}
+        </button>
+      );
+    };
+    const Mbtn = React.memo(Btn);
+    const App = () => {
+      const [value, setValue] = React.useState("Save Change");
+      const changeValue = () => setValue("Revert Changes");
+      return (
+        <div>
+          <Mbtn text={value} changeValue={changeValue} />
+          <Mbtn text="Continue" />
+        </div>
+      );
+    };
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
